@@ -1,0 +1,194 @@
+// 页面容器样式
+.real-name-contain {
+	padding: 20rpx;
+	background-color: #f5f5f5;
+	min-height: 100vh;
+	padding-bottom: 148rpx; // 为底部按钮留出空间
+}
+
+.show-bio {
+	.bio-select-box {
+		width: 700rpx;
+		height: 88rpx;
+		background: #ffffff;
+		border-radius: 20rpx 20rpx 20rpx 20rpx;
+		margin: 110rpx auto 34rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24rpx 28rpx 24rpx 32rpx;
+    box-sizing: border-box;
+		.bio-title {
+			font-family: MiSans, MiSans;
+			font-weight: 400;
+			font-size: 32rpx;
+			color: #000000;
+			line-height: 40rpx;
+			text-align: left;
+			font-style: normal;
+			text-transform: none;
+		}
+	}
+	.title {
+		font-family: MiSans, MiSans;
+		font-weight: 400;
+		font-size: 28rpx;
+		color: #999999;
+		line-height: 40rpx;
+		text-align: left;
+		font-style: normal;
+		margin-bottom: 16rpx;
+		margin-left: 12rpx;
+	}
+}
+
+.form-container {
+	width: 700rpx;
+	height: 402rpx;
+	background: #ffffff;
+	border-radius: 20rpx 20rpx 20rpx 20rpx;
+	padding: 0rpx 28rpx 30rpx;
+	margin: 0 auto 30rpx;
+	box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.place_holder { 
+  margin-top: 115rpx;
+}
+
+// 确认按钮样式
+.confirm-btn {
+	position: fixed;
+	bottom: 58rpx;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 700rpx;
+	height: 90rpx;
+	background: #f63d10;
+	border-radius: 180rpx;
+	font-family: MiSans, MiSans;
+	font-weight: 400;
+	font-size: 32rpx;
+	color: #ffffff;
+	line-height: 90rpx;
+	text-align: center;
+	font-style: normal;
+	text-transform: none;
+	z-index: 999;
+}
+
+// 表单项样式
+::v-deep .u-form-item {
+	height: 96rpx;
+	padding: 0;
+	margin: 0;
+
+	.u-form-item__body {
+		height: 96rpx;
+		padding: 0;
+		margin: 0;
+	}
+
+	// 标题样式
+	.u-form-item__left__content {
+		height: 96rpx;
+		line-height: 96rpx;
+		padding: 0;
+		margin: 0;
+
+		.u-form-item__left__content__label {
+			font-family: MiSans, MiSans;
+			font-weight: 400;
+			font-size: 28rpx;
+			color: #3d3d3d;
+			line-height: 96rpx;
+			text-align: left;
+			font-style: normal;
+			text-transform: none;
+			padding: 0;
+			margin: 0;
+		}
+	}
+
+	// 输入框样式
+	.u-form-item__right__content {
+		height: 96rpx;
+		padding: 0;
+		margin: 0;
+
+		.u-input {
+			height: 96rpx;
+			padding: 0;
+			margin: 0;
+		}
+	}
+}
+
+// 验证码表单项需要相对定位
+::v-deep .code-form-item {
+	position: relative;
+	// display: flex;
+	// width: 100%;
+	// 调整输入框宽度，为按钮留出空间
+	.code-input {
+		width: calc(100% - 200rpx) !important;
+		// flex: auto;
+	}
+
+	// 确保按钮在最上层
+	.code-btn {
+		z-index: 10;
+	}
+}
+
+// 验证码表单项需要相对定位
+::v-deep .no-border {
+	position: relative;
+
+	// 移除验证码表单项的底部分割线
+	.u-border-bottom:after {
+		display: none !important;
+	}
+}
+
+.msg-box {
+	display: flex;
+	juestify-content: space-between;
+	align-items: center;
+}
+// 获取验证码按钮样式
+.real-name-contain {
+	.code-btn {
+		flex: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		// position: absolute;
+		// right: 0;
+		// top: 0;
+		bottom: 0;
+		margin: auto 0;
+		min-width: 184rpx;
+		height: 64rpx;
+		border-radius: 180rpx;
+		border: 2rpx solid rgba(246, 61, 16, 0.5);
+		background-color: transparent;
+		color: #f63d10;
+		font-size: 28rpx;
+		font-family: MiSans, MiSans;
+		font-weight: 400;
+		line-height: 64rpx;
+		text-align: left;
+		font-style: normal;
+		text-transform: none;
+		// z-index: 10; // 确保按钮在最上层
+		padding: 14rpx 18rpx;
+		box-sizing: border-box;
+
+		// 禁用状态样式
+		&.disabled {
+			opacity: 0.5;
+			pointer-events: none;
+		}
+	}
+}

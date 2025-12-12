@@ -1,0 +1,189 @@
+.order-list-contain {
+	background: url(./assets/order-nav.png) no-repeat top;
+	background-size: 100% 200px;
+	width: 100%;
+	min-height: 100vh;
+	background-color: #121325;
+	padding: 0 42rpx;
+	box-sizing: border-box;
+	padding: 0 40rpx;
+	box-sizing: border-box;
+	.no-data{
+		// 在页面居中
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	.order-type {
+		white-space: nowrap;
+		width: 100%;
+		display: flex;
+		margin-top: 48rpx;
+		.order-type-item {
+			display: inline-block;
+			height: 80rpx;
+			font-family: PingFangSC, PingFang SC;
+			font-weight: 400;
+			font-size: 28rpx;
+			color: #cac0e0;
+			line-height: 40rpx;
+			text-align: center;
+			font-style: normal;
+			margin-right: 60rpx;
+			position: relative;
+			image{
+				width: 36rpx;
+				height: 14rpx;
+				position: absolute;
+				bottom: -1.5rpx;
+				left: 50%;
+				margin-left: -18rpx;
+			}
+		}
+		.order-type-item-active {
+			height: 80rpx;
+			font-family: PingFangSC, PingFang SC;
+			font-weight: 500;
+			font-size: 40rpx;
+			color: #ffffff;
+			line-height: 80rpx;
+			text-align: center;
+			font-style: normal;
+		}
+	}
+	.goods-list {
+		margin-top: 10rpx;
+		
+		.goods-item {
+			width: 670rpx;
+			height: 364rpx;
+			background: linear-gradient(180deg, #312351 0%, #322757 100%);
+			border-radius: 24rpx;
+			margin-bottom: 48rpx;
+			padding: 30rpx 40rpx 36rpx 40rpx;
+			box-sizing: border-box;
+			.title-box {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 34rpx;
+				.title {
+					height: 40rpx;
+					font-family: PingFangSC, PingFang SC;
+					font-weight: 500;
+					font-size: 28rpx;
+					color: #ffffff;
+					line-height: 40rpx;
+					text-align: left;
+					font-style: normal;
+				}
+				.order-types {
+					min-width: 84rpx;
+					height: 40rpx;
+					font-family: PingFangSC, PingFang SC;
+					font-weight: 400;
+					font-size: 28rpx;
+					color: #ff0000;
+					line-height: 40rpx;
+					text-align: right;
+					font-style: normal;
+				}
+			}
+		}
+		.goods-info-box {
+			display: flex;
+			justify-content: space-between;
+			.left-box {
+				display: flex;
+				image {
+					width: 120rpx;
+					height: 120rpx;
+					margin-right: 30rpx;
+					border-radius: 10rpx;
+				}
+				.order-name {
+					width: 264rpx;
+					height: 68rpx;
+					font-family: PingFangSC, PingFang SC;
+					font-weight: 400;
+					font-size: 24rpx;
+					color: #ffffff;
+					line-height: 34rpx;
+					text-align: left;
+					font-style: normal;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 2;
+				}
+			}
+			.right-box {
+				.price {
+					height: 40rpx;
+					font-family: PingFangSC, PingFang SC;
+					font-weight: 400;
+					font-size: 20rpx;
+					color: #ffffff;
+					line-height: 28rpx;
+					text-align: right;
+					font-style: normal;
+					.number {
+						font-size: 28rpx;
+					}
+				}
+				.num {
+					height: 40rpx;
+					font-family: PingFangSC, PingFang SC;
+					font-weight: 400;
+					font-size: 24rpx;
+					color: #ffffff;
+					line-height: 34rpx;
+					text-align: right;
+					font-style: normal;
+					.number {
+						font-size: 32rpx;
+					}
+				}
+			}
+		}
+        .order-btn-box{
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 44rpx;
+            .detail-btn{
+                width: 180rpx;
+                height: 60rpx;
+                background: #FFFFFF;
+                border-radius: 29rpx;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 24rpx;
+                font-family: PingFangSC, PingFang SC;
+                font-weight: 400;
+                font-size: 24rpx;
+                color: #333333;
+                font-style: normal;
+                text-transform: uppercase;
+            }
+            .pay-btn{
+                width: 180rpx;
+                height: 60rpx;
+                background: linear-gradient( 90deg, #9D61FD 0%, #4161FF 100%);
+                border-radius: 29rpx;
+                font-family: PingFangSC, PingFang SC;
+                font-weight: 500;
+                font-size: 24rpx;
+                color: #FFFFFF;
+                font-style: normal;
+                text-transform: uppercase;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 24rpx;
+            }
+        }
+	}
+}

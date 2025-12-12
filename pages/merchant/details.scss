@@ -1,0 +1,1052 @@
+// 商户详情页面样式 - 使用SCSS嵌套写法并实现样式隔离
+.details-container {
+	// 重置样式和基础布局
+	font-size: 14px;
+	color: #333;
+	background-color: #f5f5f5;
+
+	// 状态栏导航栏样式
+	.status-bar-nav {
+		// 适配状态栏，添加顶部padding
+		padding-top: var(--status-bar-height, 44rpx);
+		width: 100%;
+		box-sizing: border-box;
+		// 设置为绝对定位，叠加在轮播图上
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 999;
+	}
+
+	// 滚动内容区域
+	.scroll-content {
+		height: calc(100vh - 120rpx); // 减去导航栏和底部操作栏高度
+		width: 100%;
+		background-color: #f5f5f5;
+		padding-bottom: 80rpx;
+		// 确保内容从页面顶部开始，包括轮播图
+		padding-top: 0;
+		margin-top: 0;
+
+		.shop-banner {
+			width: 100%;
+			height: 750rpx;
+			overflow: hidden;
+			// 确保轮播图从顶部开始，与导航栏透明叠加效果匹配
+			margin-top: 0;
+			padding-top: 0;
+
+			swiper {
+				width: 100%;
+				height: 100%;
+
+				.banner-image {
+					width: 100%;
+					height: 100%;
+				}
+
+				// 自定义轮播图指示器样式
+				.uni-swiper-dots {
+					bottom: 15px;
+
+					.uni-swiper-dot {
+						width: 8px;
+						height: 8px;
+						margin: 0 4px;
+						background-color: rgba(255, 255, 255, 0.5);
+						border-radius: 50%;
+						transition: all 0.3s;
+
+						&.uni-swiper-dot-active {
+							width: 16px;
+							border-radius: 4px;
+							background-color: #fff;
+						}
+					}
+				}
+			}
+		}
+
+		// 商户基本信息区域
+		.merchant-info {
+			padding: 32rpx 20rpx 38rpx 28rpx;
+			box-sizing: border-box;
+			background-color: #fff;
+			margin-bottom: 24rpx;
+
+			.info-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				margin-bottom: 12rpx;
+				margin-left: 4rpx;
+				.shop-name {
+					font-family: MiSans, MiSans;
+					font-weight: 500;
+					font-size: 36rpx;
+					color: #3d3d3d;
+					line-height: 40rpx;
+					text-align: left;
+					font-style: normal;
+					text-transform: none;
+					flex: 1;
+				}
+
+				.header-actions {
+					display: flex;
+					align-items: center;
+					min-width: 170rpx;
+					height: 44rpx;
+					background: #ffffff;
+					border-radius: 6rpx 6rpx 6rpx 6rpx;
+					border: 2rpx solid rgba(246, 61, 16, 0.5);
+					margin-right: 6rpx;
+
+					.discount-tag {
+						width: 126rpx;
+						color: #fff;
+
+						font-family: MiSans, MiSans;
+						font-weight: 400;
+						font-size: 22rpx;
+						color: #f63d10;
+						line-height: 44rpx;
+						text-align: center;
+						font-style: normal;
+						text-transform: none;
+					}
+
+					.favorite-btn {
+						width: 44rpx;
+						height: 44rpx;
+						background: #f63d10;
+						border-radius: 6rpx 6rpx 6rpx 6rpx;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+
+						font-family: MiSans, MiSans;
+						font-weight: 400;
+						font-size: 24rpx;
+						color: #ffffff;
+						line-height: 44rpx;
+						text-align: left;
+						font-style: normal;
+						text-transform: none;
+						margin-left: -1rpx;
+					}
+				}
+			}
+
+			.rating-row {
+				display: flex;
+				align-items: center;
+				margin-bottom: 8px;
+				margin-left: 4rpx;
+				.rating {
+					display: flex;
+					align-items: baseline;
+
+					font-family: MiSans, MiSans;
+					font-weight: 400;
+					font-size: 28rpx;
+					color: #f63d10;
+					line-height: 44rpx;
+					text-align: left;
+					font-style: normal;
+					// 分割线样式
+
+					.rating-score {
+						color: #f63d10;
+					}
+
+					.rating-text {
+						color: #f63d10;
+					}
+				}
+				.separator {
+					width: 1px;
+					height: 30rpx;
+					background-color: #999;
+					margin: 0 5px;
+					display: inline-block;
+				}
+				.sales-volume,
+				.category {
+					font-family: MiSans, MiSans;
+					font-weight: 400;
+					font-size: 28rpx;
+				}
+			}
+
+			.business-hours {
+				font-size: 13px;
+				color: #666;
+				margin-bottom: 6px;
+				margin-left: 4rpx;
+				font-family: MiSans, MiSans;
+				font-weight: 400;
+				font-size: 28rpx;
+				color: #3d3d3d;
+				line-height: 44rpx;
+				text-align: left;
+				font-style: normal;
+				text-transform: none;
+				.label {
+					color: #3d3d3d;
+				}
+			}
+			.company-name {
+				margin-left: 4rpx;
+				font-family: MiSans, MiSans;
+				font-weight: 400;
+				font-size: 28rpx;
+				color: #999999;
+				line-height: 44rpx;
+				text-align: left;
+				font-style: normal;
+				text-transform: none;
+				margin-bottom: 12px;
+			}
+
+			.address-row {
+				display: flex;
+				align-items: flex-start;
+				font-size: 13px;
+				color: #666;
+				border-top: 2rpx solid #eeeeee;
+				padding-top: 20rpx;
+				box-sizing: border-box;
+				justify-content: space-between;
+				.address-box {
+					height: 100%;
+				}
+				.address_icon {
+					width: 24rpx;
+					height: 29rpx;
+					// margin-top: 2rpx;
+					position: relative;
+					top: 2rpx;
+					margin-left: 4rpx;
+				}
+				.address {
+					flex: 1;
+					margin: 0 6px;
+					word-break: break-all;
+					max-width: 498rpx;
+					font-family: MiSans, MiSans;
+					font-weight: 400;
+					font-size: 28rpx;
+					color: #3d3d3d;
+					line-height: 36rpx;
+					text-align: left;
+					font-style: normal;
+					text-transform: none;
+				}
+
+				.distance {
+					font-family: MiSans, MiSans;
+					font-weight: 400;
+					font-size: 28rpx;
+					color: #999999;
+					line-height: 44rpx;
+					text-align: left;
+					font-style: normal;
+					text-transform: none;
+					margin-right: 6px;
+				}
+
+				&:active {
+					background-color: rgba(0, 0, 0, 0.03);
+				}
+			}
+		}
+
+		// 商家宣传区域
+		.promotion-section {
+			padding: 26rpx 28rpx;
+			box-sizing: border-box;
+			background-color: #fff;
+			margin-bottom: 10px;
+
+			.promotion-image {
+				width: 100%;
+			}
+		}
+
+		// 通用区块标题样式
+		.section-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 12px 15px;
+			background-color: #fff;
+			border-bottom: 1px solid #f0f0f0;
+
+			.section-title {
+				font-size: 16px;
+				font-weight: bold;
+				color: #333;
+			}
+
+			.more-reviews {
+				font-size: 13px;
+				color: #999;
+			}
+		}
+
+		// 商品/服务列表区域
+		.products-section {
+			background-color: #fff;
+			margin-bottom: 10px;
+
+			.product-list {
+				.product-item {
+					display: flex;
+					padding: 15px;
+					border-bottom: 1px solid #f0f0f0;
+					cursor: pointer;
+					transition: background-color 0.2s;
+
+					&:last-child {
+						border-bottom: none;
+					}
+
+					&:active {
+						background-color: rgba(0, 0, 0, 0.03);
+					}
+
+					.product-image {
+						width: 80px;
+						height: 80px;
+						border-radius: 4px;
+						margin-right: 12px;
+						background-color: #f5f5f5;
+					}
+
+					.product-info {
+						flex: 1;
+						display: flex;
+						flex-direction: column;
+						justify-content: space-between;
+						min-height: 80px;
+
+						.product-title-row {
+							display: flex;
+							justify-content: space-between;
+							align-items: flex-start;
+							margin-bottom: 6px;
+
+							.product-name {
+								font-size: 15px;
+								color: #333;
+								font-weight: 500;
+								flex: 1;
+								margin-right: 8px;
+								display: -webkit-box;
+								-webkit-line-clamp: 1;
+								-webkit-box-orient: vertical;
+								overflow: hidden;
+							}
+
+							.product-tag {
+								padding: 2px 6px;
+								font-size: 10px;
+								border-radius: 3px;
+								color: #fff;
+								background-color: #ff9500;
+								white-space: nowrap;
+							}
+						}
+
+						.product-desc {
+							font-size: 12px;
+							color: #999;
+							margin-bottom: 8px;
+							line-height: 1.4;
+							display: -webkit-box;
+							-webkit-line-clamp: 1;
+							-webkit-box-orient: vertical;
+							overflow: hidden;
+						}
+
+						.product-bottom {
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+
+							.price-info {
+								display: flex;
+								align-items: baseline;
+
+								.product-price {
+									font-size: 16px;
+									font-weight: bold;
+									color: #ff6b6b;
+									margin-right: 6px;
+								}
+
+								.original-price {
+									font-size: 12px;
+									color: #999;
+									text-decoration: line-through;
+								}
+							}
+
+							.product-sales {
+								font-size: 11px;
+								color: #999;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// 用户评价模块
+		.reviews-section {
+			background-color: #fff;
+			margin-bottom: 10px;
+			padding: 15px;
+
+			.section-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 15px;
+				padding: 0;
+				border-bottom: none;
+
+				.review-stats {
+					.section-title {
+						font-size: 16px;
+						font-weight: bold;
+						color: #333;
+						display: block;
+						margin-bottom: 4px;
+					}
+
+					.review-score {
+						font-size: 13px;
+						color: #ff6b6b;
+					}
+				}
+
+				.more-reviews {
+					font-size: 13px;
+					color: #666;
+				}
+			}
+
+			// 评价分类
+			.review-categories {
+				display: flex;
+				flex-wrap: nowrap;
+				overflow-x: auto;
+				margin-bottom: 15px;
+				padding-bottom: 5px;
+				-webkit-overflow-scrolling: touch;
+
+				.category-item {
+					display: flex;
+					align-items: center;
+					padding: 5px 12px;
+					margin-right: 12px;
+					background-color: #f5f5f5;
+					border-radius: 15px;
+					white-space: nowrap;
+
+					&.active {
+						background-color: #ff6b6b;
+					}
+
+					&.active .category-text {
+						color: #fff;
+					}
+
+					.category-text {
+						font-size: 13px;
+						color: #666;
+					}
+
+					.category-count {
+						font-size: 12px;
+						color: #999;
+						margin-left: 4px;
+					}
+
+					&.active .category-count {
+						color: rgba(255, 255, 255, 0.8);
+					}
+				}
+			}
+
+			// 评价列表
+			.reviews-list {
+				.review-item {
+					padding: 15px 0;
+					border-bottom: 1px solid #f0f0f0;
+
+					&:last-child {
+						border-bottom: none;
+					}
+
+					.review-header {
+						display: flex;
+						align-items: center;
+						margin-bottom: 12px;
+
+						.user-avatar {
+							width: 36px;
+							height: 36px;
+							border-radius: 50%;
+							margin-right: 10px;
+							background-color: #f5f5f5;
+						}
+
+						.user-info {
+							flex: 1;
+						}
+
+						.user-name {
+							font-size: 14px;
+							color: #333;
+							display: block;
+							margin-bottom: 2px;
+							margin-left: 0;
+						}
+
+						.review-time {
+							font-size: 11px;
+							color: #999;
+						}
+
+						.review-rating {
+							.star {
+								font-size: 14px;
+								color: #ddd;
+
+								&.filled {
+									color: #ff9500;
+								}
+							}
+						}
+					}
+
+					.review-content {
+						font-size: 14px;
+						color: #333;
+						line-height: 1.6;
+						margin-bottom: 12px;
+						word-break: break-word;
+					}
+
+					// 评价图片
+					.review-images {
+						display: flex;
+						flex-wrap: wrap;
+						margin-bottom: 12px;
+
+						.review-image {
+							width: 80px;
+							height: 80px;
+							border-radius: 4px;
+							margin-right: 10px;
+							margin-bottom: 10px;
+							background-color: #f5f5f5;
+						}
+
+						.review-image:nth-child(3n) {
+							margin-right: 0;
+						}
+					}
+
+					// 评价商品信息
+					.review-product {
+						display: flex;
+						align-items: center;
+						padding: 10px;
+						background-color: #f9f9f9;
+						border-radius: 4px;
+
+						.review-product-image {
+							width: 40px;
+							height: 40px;
+							border-radius: 4px;
+							margin-right: 10px;
+							background-color: #f5f5f5;
+						}
+
+						.review-product-name {
+							font-size: 12px;
+							color: #666;
+							flex: 1;
+							display: -webkit-box;
+							-webkit-line-clamp: 1;
+							-webkit-box-orient: vertical;
+							overflow: hidden;
+						}
+					}
+
+					.review-date {
+						font-size: 12px;
+						color: #999;
+					}
+				}
+			}
+
+			// 加载更多
+			.load-more {
+				padding: 15px 0;
+				text-align: center;
+
+				.load-more-text {
+					font-size: 13px;
+					color: #999;
+				}
+
+				&:active {
+					background-color: rgba(0, 0, 0, 0.02);
+				}
+			}
+		}
+
+		// 商家介绍区域
+		.shop-intro-section {
+			background-color: #fff;
+			padding-bottom: 20px;
+
+			.intro-content {
+				padding: 15px;
+				font-size: 14px;
+				color: #666;
+				line-height: 1.6;
+			}
+		}
+	}
+
+	// 底部操作栏
+	.bottom-bar {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 128rpx;
+		background-color: #fff;
+		display: flex;
+		align-items: center;
+		padding: 18rpx 22rpx;
+    box-sizing: border-box;
+		border-top: 1px solid #f0f0f0;
+		z-index: 1000;
+
+		.action-buttons {
+			width: 90rpx;
+			height: 90rpx;
+			background: rgba(246, 61, 16, 0.1);
+      border-radius: 50%;
+      margin-left: 18rpx;
+      flex: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .phone-icon{
+        width: 35rpx;
+        height: 35rpx;
+      }
+		}
+
+		.navigate-btn {
+			width: 598rpx;
+			height: 90rpx;
+			background: #f63d10;
+			border-radius: 180rpx 180rpx 180rpx 180rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+			font-family: MiSans, MiSans;
+			font-weight: 400;
+			font-size: 32rpx;
+			color: #ffffff;
+			line-height: 96rpx;
+			text-align: center;
+			font-style: normal;
+			text-transform: none;
+			.navigate-icon {
+				width: 32rpx;
+				height: 32rpx;
+				margin-right: 20rpx;
+			}
+		}
+	}
+}
+
+// 响应式设计
+@media screen and (min-width: 768px) {
+	.details-container {
+		max-width: 768px;
+		margin: 0 auto;
+
+		.scroll-content {
+			height: calc(100vh - 110px);
+
+			.shop-banner {
+				height: 662rpx;
+			}
+		}
+	}
+}
+
+// 小屏幕适配
+@media screen and (max-width: 320px) {
+	.details-container {
+		.merchant-info {
+			.info-header {
+				.shop-name {
+					font-size: 16px;
+				}
+			}
+
+			.rating-row {
+				.rating {
+					.rating-score {
+						font-size: 16px;
+					}
+				}
+
+				.sales-volume,
+				.category {
+					font-size: 11px;
+				}
+			}
+
+			.business-hours,
+			.company-name,
+			.address-row {
+				font-size: 12px;
+			}
+		}
+
+		.scroll-content {
+			.shop-banner {
+				height: 750rpx;
+			}
+
+			.product-list .product-item {
+				padding: 12px;
+
+				.product-image {
+					width: 70px;
+					height: 70px;
+				}
+
+				.product-info {
+					min-height: 70px;
+
+					.product-name {
+						font-size: 14px;
+					}
+
+					.product-desc {
+						font-size: 11px;
+					}
+
+					.product-price {
+						font-size: 15px;
+					}
+
+					.original-price {
+						font-size: 11px;
+					}
+
+					.product-sales {
+						font-size: 10px;
+					}
+				}
+			}
+
+			.review-list .review-item {
+				.review-content {
+					font-size: 13px;
+				}
+
+				.review-images {
+					.review-image {
+						width: 70px;
+						height: 70px;
+					}
+				}
+			}
+		}
+	}
+}
+
+// 中等屏幕适配 (平板设备)
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+	.details-container {
+		max-width: 768px;
+		margin: 0 auto;
+		font-size: 15px;
+
+		.scroll-content {
+			height: calc(100vh - 110px);
+
+			.shop-banner {
+				height: 750rpx;
+			}
+
+			.merchant-info {
+				padding: 20px;
+				margin-bottom: 15px;
+
+				.info-header {
+					.shop-name {
+						font-size: 20px;
+					}
+
+					.discount-tag {
+						padding: 3px 10px;
+						font-size: 13px;
+					}
+				}
+
+				.rating-row {
+					.rating {
+						.rating-score {
+							font-size: 20px;
+						}
+					}
+
+					.sales-volume,
+					.category {
+						font-size: 13px;
+					}
+				}
+
+				.business-hours,
+				.company-name,
+				.address-row {
+					font-size: 14px;
+				}
+			}
+
+			.promotion-section {
+				margin-bottom: 15px;
+			}
+
+			.section-header {
+				padding: 15px;
+
+				.section-title {
+					font-size: 17px;
+				}
+
+				.more-reviews {
+					font-size: 14px;
+				}
+			}
+
+			.products-section {
+				margin-bottom: 15px;
+
+				.product-list .product-item {
+					padding: 18px;
+
+					.product-image {
+						width: 90px;
+						height: 90px;
+					}
+
+					.product-info {
+						min-height: 90px;
+
+						.product-name {
+							font-size: 16px;
+						}
+
+						.product-desc {
+							font-size: 13px;
+						}
+
+						.product-price {
+							font-size: 18px;
+						}
+					}
+				}
+			}
+
+			.reviews-section {
+				padding: 20px;
+				margin-bottom: 15px;
+
+				.section-header {
+					.section-title {
+						font-size: 17px;
+					}
+				}
+
+				.review-categories {
+					.category-item {
+						padding: 6px 14px;
+
+						.category-text {
+							font-size: 14px;
+						}
+					}
+				}
+
+				.review-list .review-item {
+					.user-avatar {
+						width: 40px;
+						height: 40px;
+					}
+
+					.user-name {
+						font-size: 15px;
+					}
+
+					.review-content {
+						font-size: 15px;
+					}
+
+					.review-images {
+						.review-image {
+							width: 90px;
+							height: 90px;
+						}
+					}
+				}
+			}
+
+			.shop-intro-section {
+				padding-bottom: 30px;
+
+				.intro-content {
+					font-size: 15px;
+				}
+			}
+		}
+
+		.bottom-bar {
+			height: 55px;
+			padding: 0 20px;
+
+			.action-buttons {
+				.action-item {
+					margin-right: 25px;
+
+					.action-text {
+						font-size: 13px;
+					}
+				}
+			}
+
+			.navigate-btn {
+				height: 40px;
+				line-height: 40px;
+				font-size: 16px;
+			}
+		}
+	}
+}
+
+// 大屏幕适配 (桌面和大屏设备)
+@media screen and (min-width: 1024px) {
+	.details-container {
+		max-width: 800px;
+		margin: 0 auto;
+		font-size: 15px;
+
+		.scroll-content {
+			height: calc(100vh - 110px);
+
+			.shop-banner {
+				height: 750rpx;
+				border-radius: 8px 8px 0 0;
+				overflow: hidden;
+			}
+
+			.merchant-info,
+			.products-section,
+			.reviews-section,
+			.shop-intro-section {
+				border-radius: 0 0 8px 8px;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+			}
+
+			.merchant-info {
+				padding: 20rpx 20rpx 38rpx;
+        box-sizing: border-box;
+				margin-bottom: 15px;
+
+				.info-header {
+					.shop-name {
+						font-size: 22px;
+					}
+				}
+
+				.rating-row {
+					.rating {
+						.rating-score {
+							font-size: 22px;
+						}
+					}
+				}
+			}
+
+			.products-section {
+				margin-bottom: 15px;
+
+				.product-list {
+					display: grid;
+					grid-template-columns: repeat(2, 1fr);
+					gap: 15px;
+					padding: 0 15px 15px;
+
+					.product-item {
+						flex-direction: column;
+						padding: 15px;
+						border: 1px solid #f0f0f0;
+						border-radius: 8px;
+						margin: 0;
+						box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+						&:last-child {
+							border-bottom: 1px solid #f0f0f0;
+						}
+
+						.product-image {
+							width: 100%;
+							height: 180px;
+							margin-right: 0;
+							margin-bottom: 12px;
+						}
+
+						.product-info {
+							min-height: auto;
+						}
+					}
+				}
+			}
+
+			.reviews-section {
+				padding: 20px;
+
+				.review-list .review-item {
+					.review-images {
+						.review-image {
+							width: 120px;
+							height: 120px;
+						}
+					}
+				}
+			}
+		}
+
+		.bottom-bar {
+			max-width: 800px;
+			margin: 0 auto;
+			border-radius: 8px 8px 0 0;
+		}
+	}
+}

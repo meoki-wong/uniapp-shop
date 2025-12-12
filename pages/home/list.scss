@@ -1,0 +1,449 @@
+// 订单页面样式
+.order-contain {
+	height: 100vh;
+	overflow: hidden;
+	background-color: #f5f5f5;
+	padding-top: 88rpx;
+	// 使用变量便于主题统一
+	--primary-color: #f63d10;
+	--success-color: #2ecc71;
+	--gray-color: #999999;
+	--text-color: #3d3d3d;
+	--light-text-color: #666666;
+	--border-color: #f0f0f0;
+	--bg-color: #ffffff;
+	--light-bg-color: #f5f5f5;
+	.top-box {
+		background-color: #fff;
+	}
+
+	// 搜索区域
+	.search-section {
+		// padding: 28rpx 26rpx 0 24rpx;
+		padding-top: 28rpx;
+		box-sizing: border-box;
+		background-color: var(--bg-color);
+		// box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.03);
+		// position: sticky;
+		top: 44px;
+		z-index: 10;
+
+		.search-box {
+			display: flex;
+			align-items: center;
+			// background-color: var(--light-bg-color);
+			// border-radius: 40rpx;
+			// padding: 0 24rpx;
+			height: 64rpx;
+			margin: 0 26rpx 0 24rpx;
+			.search-icon {
+				color: var(--gray-color);
+				// margin-right: 12rpx;
+				font-size: 32rpx;
+				border-radius: 50%;
+				width: 64rpx;
+				height: 64rpx;
+				background: #f63d10;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex: none;
+			}
+
+			.search-input {
+				// flex: 1;
+				width: 622rpx;
+				height: 64rpx;
+				color: #333333;
+				background-color: #fefdfe;
+				border-radius: 40rpx;
+				font-family: Inter, Inter;
+				font-weight: 400;
+				font-size: 24rpx;
+				padding: 0 26rpx;
+				line-height: 64rpx;
+				box-sizing: border-box;
+				text-align: left;
+				font-style: normal;
+				margin-right: 14rpx;
+				border: 2rpx solid #eeeeee;
+				// 重置默认样式
+				// outline: none;
+				// 修复placeholder位置
+				&::placeholder {
+					line-height: 64rpx;
+					vertical-align: middle;
+				}
+			}
+
+			.search-btn {
+				width: 60rpx;
+				height: 60rpx;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 50%;
+				transition: background-color 0.2s;
+
+				.icon-search {
+					color: var(--primary-color);
+					font-size: 36rpx;
+				}
+
+				// 点击效果
+
+				:active {
+					background-color: rgba(255, 107, 107, 0.1);
+				}
+			}
+		}
+	}
+
+	// 订单状态筛选
+	.status-filter {
+		display: flex;
+		background-color: var(--bg-color);
+		padding: 0 30rpx;
+		margin-top: 20rpx;
+		// box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.03);
+		// position: sticky;
+		// top: 238rpx; // 88rpx导航栏 + 搜索栏高度
+		// z-index: 9;
+		// border-bottom: 1px solid var(--border-color);
+
+		.filter-item {
+			flex: 1;
+			text-align: center;
+			padding: 24rpx 0;
+			font-size: 28rpx;
+			color: var(--light-text-color);
+			position: relative;
+			transition: color 0.2s;
+
+			// 点击效果
+
+			:active {
+				opacity: 0.8;
+			}
+
+			&.active {
+				color: var(--primary-color);
+				font-weight: 500;
+
+				&::after {
+					content: "";
+					position: absolute;
+					bottom: 0;
+					left: 50%;
+					transform: translateX(-50%);
+					width: 50%;
+					height: 6rpx;
+					background-color: var(--primary-color);
+					border-radius: 3rpx;
+				}
+			}
+		}
+	}
+
+	// 订单列表
+	.order-list {
+		// 原来是减去300rpx
+		height: calc(100vh - 428rpx); // 减去导航栏(88rpx)、搜索栏和筛选栏的总高度
+		overflow: hidden;
+		margin-top: 20rpx;
+		padding-bottom: 40rpx;
+
+		.merchant-card {
+			background-color: var(--bg-color);
+			border-radius: 12rpx;
+			margin: 0 auto 24rpx;
+			overflow: hidden;
+			box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.03);
+			transition: transform 0.2s, box-shadow 0.2s;
+			width: 700rpx;
+			padding: 26rpx 24rpx 32rpx 24rpx;
+			box-sizing: border-box;
+
+			:active {
+				transform: scale(0.98);
+			}
+
+			// 商户卡片内容
+			.merchant-content {
+				display: flex;
+
+				.store-image {
+					width: 200rpx;
+					height: 200rpx;
+					border-radius: 10rpx;
+					margin-right: 42rpx;
+					overflow: hidden;
+					// background-color: var(--light-bg-color);
+
+					image {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+						transition: transform 0.3s;
+					}
+				}
+
+				.merchant-info {
+					flex: 1;
+					display: flex;
+					flex-direction: column;
+
+					.merchant-header {
+						display: flex;
+						justify-content: space-between;
+						align-items: flex-start;
+						margin-bottom: 8rpx;
+						height: 44rpx;
+						.store-name {
+							font-family: MiSans, MiSans;
+							font-weight: 600;
+							font-size: 32rpx;
+							height: 44rpx;
+							color: #3d3d3d;
+							line-height: 44rpx;
+							text-align: left;
+							font-style: normal;
+							// margin-bottom: 10rpx;
+						}
+
+						.phone-icon {
+							border-radius: 50%;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							position: relative;
+							top: 96rpx;
+							width: 60rpx;
+							height: 60rpx;
+							background: rgba(246, 61, 16, 0.1);
+
+							image {
+								width: 32rpx;
+								height: 32rpx;
+							}
+						}
+					}
+
+					.merchant-stats {
+						display: flex;
+						align-items: center;
+						margin-bottom: 4rpx;
+						height: 44rpx;
+						font-family: MiSans, MiSans;
+						font-weight: 400;
+						font-size: 24rpx;
+
+						line-height: 44rpx;
+						text-align: left;
+						font-style: normal;
+						text-transform: none;
+						.rating {
+							color: #f63d10;
+						}
+
+						.separator {
+							font-size: 24rpx;
+							color: #cccccc;
+							margin: 0 8rpx;
+						}
+
+						.sales {
+							font-size: 24rpx;
+							color: var(--text-color);
+						}
+
+						.category {
+							font-size: 24rpx;
+							color: var(--text-color);
+						}
+					}
+
+					.merchant-detail {
+						display: flex;
+						margin-bottom: 6rpx;
+						font-family: MiSans, MiSans;
+						font-weight: 400;
+						font-size: 24rpx;
+						color: #3d3d3d;
+						
+						text-align: left;
+						font-style: normal;
+						text-transform: none;
+						&:last-child {
+							margin-bottom: 0;
+						}
+
+						.business-time {
+							margin-bottom: 6rpx;
+							// line-height: 44rpx;
+							margin-right: 6rpx;
+						}
+						.company-name {
+							font-family: MiSans, MiSans;
+							font-weight: 400;
+							font-size: 24rpx;
+							color: #999999;
+							line-height: 44rpx;
+							text-align: left;
+							font-style: normal;
+							text-transform: none;
+						}
+					}
+				}
+			}
+			.merchant-footer {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-top: 22rpx;
+
+				.address {
+					display: flex;
+					align-items: center;
+					flex: 1;
+
+					.address-icon {
+						width: 32rpx;
+						height: 32rpx;
+						margin-right: 8rpx;
+					}
+
+					.address-text {
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						max-width: 330rpx;
+						font-family: MiSans, MiSans;
+						font-weight: 400;
+						font-size: 28rpx;
+						color: #666666;
+						line-height: 44rpx;
+						text-align: left;
+						font-style: normal;
+						text-transform: none;
+					}
+				}
+
+				.distance-tag {
+					display: flex;
+					align-items: center;
+					background-color: #fff5f5;
+					justify-content: center;
+					min-width: 152rpx;
+					height: 60rpx;
+					border-radius: 180rpx 180rpx 180rpx 180rpx;
+					border: 2rpx solid rgba(246, 61, 16, 0.5);
+					padding: 16rpx 26rpx 16rpx 18rpx;
+					box-sizing: border-box;
+					.distance-icon {
+						width: 24rpx;
+						height: 24rpx;
+						margin-right: 18rpx;
+					}
+
+					.distance-text {
+						font-family: MiSans, MiSans;
+						font-weight: 500;
+						font-size: 24rpx;
+						color: #f63d10;
+						line-height: 96rpx;
+						text-align: left;
+						font-style: normal;
+						text-transform: none;
+					}
+				}
+			}
+		}
+	}
+
+	// 空状态
+	.empty-state {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 100rpx 0;
+
+		.empty-icon {
+			font-size: 120rpx;
+			color: var(--gray-color);
+			margin-bottom: 20rpx;
+		}
+
+		.empty-text {
+			font-size: 28rpx;
+			color: var(--gray-color);
+		}
+	}
+
+	// 加载更多
+	.load-more {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		padding-bottom: 90rpx;
+
+		.load-text {
+			font-size: 28rpx;
+			color: var(--gray-color);
+			margin-left: 12rpx;
+		}
+	}
+
+	// 没有更多数据
+	.no-more {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-bottom: 90rpx;
+		box-sizing: border-box;
+		.no-more-text {
+			font-size: 28rpx;
+			color: var(--gray-color);
+		}
+	}
+}
+
+// 订单状态颜色样式
+.status-waiting {
+	color: var(--primary-color) !important;
+}
+
+.status-completed {
+	color: var(--success-color) !important;
+}
+
+.status-canceled {
+	color: var(--gray-color) !important;
+}
+
+// 响应式调整
+@media screen and (max-width: 320px) {
+	.order-contain {
+		.order-list {
+			.order-item {
+				margin-left: 15rpx;
+				margin-right: 15rpx;
+
+				.order-header {
+					.store-name {
+						max-width: 300rpx;
+					}
+				}
+
+				.order-content {
+					.store-image {
+						width: 140rpx;
+						height: 140rpx;
+					}
+				}
+			}
+		}
+	}
+}

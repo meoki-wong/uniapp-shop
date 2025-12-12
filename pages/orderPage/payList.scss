@@ -1,0 +1,173 @@
+.pay-list-contain {
+	background-color: #f5f5f5;
+	height: 100vh;
+    overflow: hidden;
+	.navbar-height {
+		height: 88rpx;
+	}
+
+	// 代币余额卡片样式
+	.balance-card {
+		background-color: #ffb31a;
+		margin: 40rpx 26rpx 26rpx;
+		padding: 12rpx 12rpx 12rpx 44rpx;
+		box-sizing: border-box;
+		border-radius: 20rpx;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		// box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+		width: 700rpx;
+		height: 192rpx;
+		background: linear-gradient(270deg, #ffe16d 0%, #ffc73d 100%);
+		border-radius: 20rpx 20rpx 20rpx 20rpx;
+		.balance-info {
+			margin-top: 36rpx;
+			.balance-label {
+				margin-bottom: 10rpx;
+
+				font-family: MiSans, MiSans;
+				font-weight: 400;
+				font-size: 28rpx;
+				color: #3d3d3d;
+				line-height: 40rpx;
+				text-align: left;
+				font-style: normal;
+			}
+			.balance-amount {
+				font-family: MiSans, MiSans;
+				font-weight: 600;
+				font-size: 40rpx;
+				color: #3d3d3d;
+				line-height: 40rpx;
+				text-align: left;
+				font-style: normal;
+			}
+		}
+
+		.balance-icon {
+			.money_icon {
+				width: 202rpx;
+				height: 168rpx;
+			}
+		}
+	}
+
+	// 标签页样式
+	.tabs {
+		background-color: #fff;
+		display: flex;
+		height: 78rpx;
+		line-height: 88rpx;
+		border-bottom: 1rpx solid #e5e5e5;
+		width: 700rpx;
+		margin: 0 auto;
+		border-radius: 10rpx 10rpx 0 0;
+		.tab-item {
+			flex: 1;
+			text-align: center;
+			font-size: 28rpx;
+			color: #666;
+			position: relative;
+
+			&.active {
+				color: #ff3b30;
+				font-weight: 500;
+
+				&::after {
+					content: "";
+					position: absolute;
+					bottom: 0;
+					left: 50%;
+					transform: translateX(-50%);
+					width: 76rpx;
+					height: 6rpx;
+					background-color: #ff3b30;
+					border-radius: 3rpx;
+				}
+			}
+		}
+	}
+
+	// 列表容器样式
+	.list-container {
+		background-color: #fff;
+		width: 700rpx;
+		margin: 0 auto;
+		border-radius: 0 0 10rpx 10rpx;
+		padding-bottom: 80rpx;
+        box-sizing: border-box;
+		.list-item {
+				background-color: transparent;
+				padding: 30rpx 30rpx 28rpx;
+				box-sizing: border-box;
+				border-bottom: 1rpx solid #f0f0f0;
+				height: 180rpx;
+				// 移除最后一个列表项的底部分割线
+				&:last-child {
+					border-bottom: none;
+				}
+
+			.item-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 10rpx;
+
+				.item-title {
+					font-family: MiSans, MiSans;
+					font-weight: 400;
+					font-size: 32rpx;
+					color: #3d3d3d;
+					line-height: 40rpx;
+					text-align: left;
+					font-style: normal;
+					text-transform: none;
+				}
+
+				.item-amount {
+					font-family: MiSans, MiSans;
+					font-weight: 600;
+					font-size: 40rpx;
+					color: #3d3d3d;
+					line-height: 36rpx;
+					text-align: right;
+					font-style: normal;
+					text-transform: none;
+                    position: relative;
+                    top: 48rpx;
+
+					&.positive {
+						color: #3d3d3d;
+					}
+
+					&.negative {
+						color: #3d3d3d;
+					}
+				}
+			}
+
+			.item-merchant {
+				font-family: MiSans, MiSans;
+				font-weight: 400;
+				font-size: 24rpx;
+				color: #999999;
+				line-height: 36rpx;
+				text-align: left;
+				font-style: normal;
+				text-transform: none;
+			}
+
+			.item-time {
+				font-family: MiSans, MiSans;
+				font-weight: 400;
+				font-size: 24rpx;
+				color: #999999;
+				line-height: 36rpx;
+				text-align: left;
+				font-style: normal;
+				text-transform: none;
+			}
+		}
+	}
+}

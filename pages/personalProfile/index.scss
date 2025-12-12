@@ -1,0 +1,179 @@
+.personal-profile-container {
+	background-color: #f5f5f5;
+	min-height: 100vh;
+	padding-bottom: 40rpx;
+	padding-top: 116rpx;
+	box-sizing: border-box;
+}
+
+/* 头像上传区域样式 */
+.avatar-section {
+	padding: 26rpx 0 60rpx;
+	background-color: #ffffff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.avatar-container {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.avatar {
+	width: 196rpx;
+	height: 196rpx;
+	border-radius: 50%;
+	border: 1rpx solid #e0e0e0;
+}
+
+.avatar-upload-btn {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 78rpx;
+	height: 78rpx;
+	background-color: #ff4757;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	// border: 2rpx solid #ffffff;
+	background: #ffffff;
+	box-shadow: 0rpx 0rpx 12rpx 0rpx rgba(0, 0, 0, 0.25);
+}
+
+.user_info_box {
+	margin: 10rpx 24rpx 0 26rpx;
+	border-radius: 20rpx;
+	overflow: hidden;
+	padding: 32rpx 32rpx 0;
+	box-sizing: border-box;
+	background-color: #fff;
+}
+.camera-icon {
+	width: 28rpx;
+	height: 28rpx;
+}
+.right-icon {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	margin-top: -14rpx;
+}
+/* 表单区域样式 */
+.info-form-section {
+	// margin-top: 20rpx;
+	background-color: #ffffff;
+}
+
+.form-item {
+	display: flex;
+	// justify-content: space-between;
+	align-items: center;
+	// padding: 0 30rpx;
+	height: 98rpx;
+	border-bottom: 1rpx solid #eeeeee;
+	position: relative;
+	&:last-child {
+		border-bottom: none;
+	}
+}
+
+.form-label {
+	font-size: 28rpx;
+	color: #333333;
+	flex: 0 0 84rpx;
+	margin-right: 74rpx;
+}
+
+.form-input {
+	flex: 1;
+	// text-align: left;
+	// font-size: 28rpx;
+	// color: #333333;
+	padding: 0;
+	font-family: MiSans, MiSans;
+	font-weight: 400;
+	font-size: 28rpx;
+	color: #666666;
+	line-height: 96rpx;
+	text-align: left;
+	font-style: normal;
+}
+
+.form-value {
+	// font-size: 28rpx;
+	// color: #333333;
+	// text-align: left;
+	// word-break: break-all;
+
+	font-family: MiSans, MiSans;
+	font-weight: 400;
+	font-size: 28rpx;
+	color: #666666;
+	line-height: 96rpx;
+	text-align: left;
+	font-style: normal;
+}
+
+.phone {
+	font-size: 28rpx;
+	color: #999999;
+	text-align: left;
+}
+
+.gender-container {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.gender-container .form-value {
+	margin-right: auto;
+}
+
+.arrow-icon {
+	width: 16rpx;
+	height: 28rpx;
+	margin-left: 10rpx;
+	// background-image: url('/static/img/arrow-right.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+/* 确认按钮样式 */
+.confirm-btn {
+	position: fixed;
+	bottom: 58rpx;
+	left: 30rpx;
+	right: 30rpx;
+	height: 88rpx;
+	background-color: #ff4757;
+	border-radius: 44rpx;
+	color: #ffffff;
+	font-size: 32rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 500;
+	margin: 0;
+	z-index: 10;
+}
+
+/* 输入框聚焦时的样式 */
+input:focus {
+	outline: none;
+}
+
+/* 适配不同屏幕尺寸 */
+@media screen and (min-width: 768px) {
+	.personal-profile-container {
+		max-width: 768px;
+		margin: 0 auto;
+	}
+}

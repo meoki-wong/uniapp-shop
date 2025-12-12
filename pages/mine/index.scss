@@ -1,0 +1,286 @@
+.mine-contain {
+	background-color: #f4f4f4;
+	min-height: 100vh;
+	.status-bar-nav {
+		// 适配状态栏，添加顶部padding
+		padding-top: var(--status-bar-height, 44rpx);
+		width: 100%;
+		box-sizing: border-box;
+		// 设置为绝对定位，叠加在轮播图上
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 999;
+	}
+	// 主体内容区域，设置padding-top避免被navbar遮挡
+	.main-content {
+		padding-top: 132rpx; // navbar高度
+		background-color: #f5f5f5;
+		background: url('/static/img/mine_bg.png') no-repeat top;
+		background-size: contain;
+		// 个人信息区域
+		.user-info {
+			background-color: #f63d10;
+			margin: 40rpx 30rpx;
+			display: flex;
+			align-items: center;
+			height: 206rpx; // 设置总高度为316rpx
+			position: relative;
+
+			// // 添加外翻弧形底部
+			// &::after {
+			// 	content: "";
+			// 	position: absolute;
+			// 	bottom: -30rpx; // 弧形高度，增加弧度
+			// 	left: 0;
+			// 	right: 0;
+			// 	height: 30rpx; // 弧形高度，增加弧度
+			// 	background-color: #f63d10;
+			// 	border-radius: 0 0 50% 50% / 0 0 100% 100%; // 创建外翻弧形效果
+			// }
+
+			.avatar {
+				width: 140rpx;
+				height: 140rpx;
+				border-radius: 50%;
+				background-color: #fff;
+				margin-right: 30rpx;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border: 1rpx solid #fff; // 添加1rpx的白色外围边框
+				box-sizing: border-box; // 确保边框不会增加元素的实际尺寸
+
+				img {
+					width: 100%;
+					height: 100%;
+					border-radius: 50%;
+				}
+			}
+
+			.user-details {
+				flex: 1;
+				display: flex;
+				align-items: center;
+				.user-name {
+					margin-bottom: 12rpx;
+
+					font-family: MiSans, MiSans;
+					font-weight: 500;
+					font-size: 34rpx;
+					color: #ffffff;
+					line-height: 40rpx;
+					text-align: left;
+					font-style: normal;
+					text-transform: none;
+				}
+			}
+		}
+
+		// 余额信息卡片
+		.balance-card {
+			background-color: #fff;
+			margin: -40rpx 30rpx 0; // 减少上边距，使卡片上移并盖住弧度的一半
+			position: relative;
+			z-index: 10; // 确保卡片在弧形之上
+			padding: 36rpx;
+			border-radius: 16rpx;
+			display: flex;
+			justify-content: space-between;
+
+			.balance-item {
+				text-align: center;
+				flex: 1;
+
+				.balance-amount {
+					font-family: MiSans, MiSans;
+					font-weight: 600;
+					font-size: 36rpx;
+					color: #3d3d3d;
+					line-height: 40rpx;
+					text-align: center;
+					font-style: normal;
+					text-transform: none;
+					margin-bottom: 12rpx;
+				}
+
+				.balance-label {
+					font-family: MiSans, MiSans;
+					font-weight: 400;
+					font-size: 28rpx;
+					color: #3d3d3d;
+					line-height: 40rpx;
+					text-align: center;
+					font-style: normal;
+					text-transform: none;
+				}
+			}
+
+			.divider {
+				width: 1rpx;
+				height: 100rpx;
+				background-color: #eee;
+			}
+		}
+
+		// 服务列表区域
+		.service-section {
+			background-color: #fff;
+			margin: 24rpx 30rpx;
+			border-radius: 16rpx;
+			padding: 28rpx;
+			.section-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 28rpx;
+
+				.section-title {
+					font-size: 28rpx;
+					color: #333;
+					font-weight: 500;
+				}
+
+				.section-date {
+					font-size: 24rpx;
+					color: #999;
+				}
+			}
+			.service-list {
+				display: flex;
+				justify-content: space-between;
+
+				.service-item {
+					flex: 1;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					cursor: pointer;
+
+					.service-icon {
+						// width: 80rpx;
+						// height: 80rpx;
+						// border: 1rpx solid #f0f0f0;
+						border-radius: 8rpx;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						margin-bottom: 16rpx;
+
+						img {
+							width: 80rpx;
+							height: 80rpx;
+							object-fit: contain;
+						}
+					}
+
+					.service-text {
+						font-family: MiSans, MiSans;
+						font-weight: 400;
+						font-size: 28rpx;
+						color: #3d3d3d;
+						line-height: 40rpx;
+						text-align: center;
+						font-style: normal;
+						text-transform: none;
+					}
+				}
+			}
+		}
+
+		// 消费统计区域
+		.consumption-section {
+			background-color: #fff;
+			margin: 0 30rpx 24rpx;
+			border-radius: 16rpx;
+			padding: 28rpx;
+
+			.section-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 28rpx;
+
+				.section-title {
+					font-size: 28rpx;
+					color: #333;
+					font-weight: 500;
+				}
+
+				.section-date {
+					font-size: 24rpx;
+					color: #999;
+				}
+			}
+
+			.consumption-stats {
+				display: flex;
+				justify-content: space-between;
+
+				.stat-item {
+					text-align: center;
+					flex: 1;
+
+					.stat-value {
+						font-family: MiSans, MiSans;
+						font-weight: 600;
+						font-size: 36rpx;
+						color: #3d3d3d;
+						line-height: 40rpx;
+						text-align: center;
+						font-style: normal;
+						text-transform: none;
+						margin-bottom: 12rpx;
+					}
+
+					.stat-label {
+						font-family: MiSans, MiSans;
+						font-weight: 400;
+						font-size: 28rpx;
+						color: #3d3d3d;
+						line-height: 40rpx;
+						text-align: center;
+						font-style: normal;
+						text-transform: none;
+					}
+				}
+
+				.divider {
+					width: 1rpx;
+					height: 60rpx;
+					background-color: #e5e5e5;
+				}
+			}
+		}
+
+		.logout-btn {
+			// width: 700rpx;
+			height: 100rpx;
+			background: #ffffff;
+			border-radius: 20rpx 20rpx 20rpx 20rpx;
+
+			font-family: MiSans, MiSans;
+			font-weight: 400;
+			font-size: 28rpx;
+			color: #3d3d3d;
+			line-height: 40rpx;
+
+			font-style: normal;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 0 30rpx;
+		}
+
+		// 底部运营信息
+		.operation-info {
+			padding: 40rpx 30rpx;
+			text-align: center;
+
+			.operation-text {
+				font-size: 24rpx;
+				color: #999;
+			}
+		}
+	}
+}

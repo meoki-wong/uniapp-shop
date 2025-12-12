@@ -1,0 +1,329 @@
+// 订单详情页面样式
+.order-details-contain {
+	min-height: 100vh;
+	background-color: #f5f5f5;
+	padding-top: 88rpx;
+
+	// 订单状态卡片
+	.order-status-card {
+		background-color: #ffffff;
+		margin-bottom: 20rpx;
+		padding: 30rpx;
+		min-height: 248rpx;
+		width: 700rpx;
+		border-radius: 20rpx 20rpx 20rpx 20rpx;
+		margin: 44rpx auto 0;
+		padding: 26rpx;
+		box-sizing: border-box;
+		.status_icon {
+			width: 32rpx;
+			height: 32rpx;
+			margin-right: 14rpx;
+		}
+		.status-text {
+			font-family: MiSans, MiSans;
+			font-weight: 400;
+			font-size: 32rpx;
+			color: #ff4444;
+			line-height: 36rpx;
+			text-align: center;
+			font-style: normal;
+			text-transform: none;
+
+			padding-bottom: 18rpx;
+			box-sizing: border-box;
+			margin-bottom: 18rpx;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			.status_icon {
+				width: 32rpx;
+				height: 32rpx;
+				margin-right: 10rpx;
+				vertical-align: middle;
+			}
+		}
+
+		.pre-box {
+			border-bottom: 2rpx solid #eeeeee;
+			margin-bottom: 20rpx;
+			.pre-pay-info {
+				margin: 0 auto 24rpx;
+				font-family: MiSans, MiSans;
+				font-weight: 400;
+				font-size: 24rpx;
+				color: #3d3d3d;
+				line-height: 36rpx;
+				text-align: center;
+				font-style: normal;
+				text-transform: none;
+			}
+			.pay-btn {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 0 auto 28rpx;
+				width: 200rpx;
+				height: 60rpx;
+				background: #f63d10;
+				border-radius: 180rpx 180rpx 180rpx 180rpx;
+				font-family: MiSans, MiSans;
+				font-weight: 400;
+				font-size: 24rpx;
+				color: #ffffff;
+				line-height: 24rpx;
+				text-align: center;
+				font-style: normal;
+				text-transform: none;
+			}
+		}
+
+		.shop-info {
+			display: flex;
+			align-items: center;
+			margin-bottom: 24rpx;
+			margin-top: 28rpx;
+			.shop-icon {
+				width: 36rpx;
+				height: 36rpx;
+				margin-right: 10rpx;
+			}
+
+			.store-name {
+				flex: 1;
+
+				font-family: MiSans, MiSans;
+				font-weight: 600;
+				font-size: 32rpx;
+				color: #3d3d3d;
+				line-height: 44rpx;
+				text-align: left;
+				font-style: normal;
+				text-transform: none;
+			}
+
+			.order-price {
+				font-family: MiSans, MiSans;
+				font-weight: 600;
+				font-size: 32rpx;
+				color: #3d3d3d;
+				line-height: 44rpx;
+				text-align: right;
+				font-style: normal;
+			}
+		}
+
+		.shop-address {
+			display: flex;
+			align-items: center;
+
+			.shop-icon {
+				width: 36rpx;
+				height: 36rpx;
+				margin-right: 10rpx;
+			}
+
+			.address-text {
+				font-family: MiSans, MiSans;
+				font-weight: 400;
+				font-size: 28rpx;
+				color: #666666;
+				line-height: 36rpx;
+				text-align: left;
+				font-style: normal;
+
+				flex: 1;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+		}
+	}
+
+	// 信息区块
+	.info-section {
+		margin: 24rpx auto 20rpx;
+		padding: 30rpx 28rpx;
+		width: 700rpx;
+		height: 224rpx;
+		background: #ffffff;
+		border-radius: 20rpx 20rpx 20rpx 20rpx;
+		box-sizing: border-box;
+		.info-item {
+			display: flex;
+			// margin-bottom: 10rpx;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			.info-label {
+				min-width: 112rpx;
+				font-family: MiSans, MiSans;
+				font-weight: 400;
+				font-size: 28rpx;
+				color: #666666;
+				line-height: 56rpx;
+				text-align: left;
+				font-style: normal;
+			}
+
+			.info-value {
+				flex: 1;
+
+				font-family: MiSans, MiSans;
+				font-weight: 400;
+				font-size: 28rpx;
+				color: #3d3d3d;
+				line-height: 56rpx;
+				text-align: right;
+				font-style: normal;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+		}
+	}
+
+	// 订单编号和支付时间区块
+	.order-info-section {
+		background-color: #ffffff;
+		margin-bottom: 20rpx;
+		padding: 30rpx 28rpx;
+		box-sizing: border-box;
+		width: 700rpx;
+		min-height: 76rpx;
+		background: #ffffff;
+		border-radius: 20rpx 20rpx 20rpx 20rpx;
+		margin: 0 auto 24rpx;
+		.info-item {
+			display: flex;
+			// margin-bottom: 20rpx;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			.info-label {
+				min-width: 112rpx;
+				font-family: MiSans, MiSans;
+				font-weight: 400;
+				font-size: 28rpx;
+				color: #666666;
+				line-height: 56rpx;
+				text-align: left;
+				font-style: normal;
+			}
+
+			.info-value {
+				flex: 1;
+
+				font-family: MiSans, MiSans;
+				font-weight: 400;
+				font-size: 28rpx;
+				color: #3d3d3d;
+				line-height: 56rpx;
+				text-align: right;
+				font-style: normal;
+				text-transform: none;
+			}
+		}
+	}
+
+	// 支付详情区块
+	.payment-section {
+		background-color: #ffffff;
+		margin-bottom: 20rpx;
+		padding: 30rpx 28rpx;
+		box-sizing: border-box;
+		width: 700rpx;
+		height: 224rpx;
+		background: #ffffff;
+		border-radius: 20rpx 20rpx 20rpx 20rpx;
+		margin: 0 auto;
+		.info-item {
+			display: flex;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			.info-label {
+				min-width: 112rpx;
+				height: 56rpx;
+				font-family: MiSans, MiSans;
+				font-weight: 400;
+				font-size: 28rpx;
+				color: #666666;
+				line-height: 56rpx;
+				text-align: left;
+				font-style: normal;
+				text-transform: none;
+			}
+
+			.info-value {
+				flex: 1;
+				height: 56rpx;
+				font-family: MiSans, MiSans;
+				font-weight: 400;
+				font-size: 28rpx;
+				color: #3d3d3d;
+				line-height: 56rpx;
+				text-align: right;
+				font-style: normal;
+				text-transform: none;
+			}
+		}
+	}
+
+	.options {
+		width: 748rpx;
+		min-height: 116rpx;
+		background: #ffffff;
+		border-radius: 0rpx 0rpx 0rpx 0rpx;
+		display: flex;
+		justify-content: center;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		z-index: 100;
+		// padding: 18rpx auto 30rpx;
+		padding-top: 18rpx;
+		box-sizing: border-box;
+		.cancel-btn {
+			width: 172rpx;
+			height: 64rpx;
+			border-radius: 180rpx 180rpx 180rpx 180rpx;
+			border: 2rpx solid #dddddd;
+			font-family: MiSans, MiSans;
+			font-weight: 400;
+			font-size: 28rpx;
+			color: #999999;
+			line-height: 36rpx;
+			text-align: left;
+			font-style: normal;
+			text-transform: none;
+			margin-right: 18rpx;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.confirm-btn {
+			width: 490rpx;
+			height: 64rpx;
+			background: #f63d10;
+			border-radius: 180rpx 180rpx 180rpx 180rpx;
+			font-family: MiSans, MiSans;
+			font-weight: 400;
+			font-size: 28rpx;
+			color: #ffffff;
+			line-height: 36rpx;
+			text-align: left;
+			font-style: normal;
+			text-transform: none;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+}

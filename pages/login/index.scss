@@ -1,0 +1,94 @@
+.login-contain {
+	width: 100%;
+	height: 100vh;
+	background-color: #fff;
+
+	.login_wx_icon{
+		width: 50rpx;
+		height: 50rpx;
+		margin-right: 16rpx;
+	}
+	.bg-contain {
+		width: 100%;
+		height: 1052rpx;
+		margin-top: 52rpx;
+		position: relative;
+		overflow: hidden;
+		padding-top: 8rpx; /* 添加顶部内边距，确保logo不被遮挡 */
+		/* 背景图片样式 */
+		.bg-image {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 0; /* 确保图片在底层 */
+		}
+
+		/* Logo图片样式，在背景图片上方，距离顶部8rpx */
+		.logo_image {
+			position: relative;
+			display: block;
+			width: 228rpx;
+			height: 236rpx;
+			margin: 0 auto 4rpx; /* 移除顶部外边距，使用容器的padding-top */
+			z-index: 10; /* 确保在背景图片上方 */
+		}
+		.login_tips {
+			width: 258rpx;
+			height: 40rpx;
+			font-family: MiSans, MiSans;
+			font-weight: 500;
+			font-size: 28rpx;
+			color: #666666;
+			line-height: 40rpx;
+			text-align: center;
+			font-style: normal;
+			z-index: 10; /* 确保在背景图片上方 */
+		}
+	}
+
+	.login_btn{
+		width: 640rpx;
+		height: 88rpx;
+		background: #F63D10;
+		border-radius: 60rpx 60rpx 60rpx 60rpx;
+		border: none; /* 移除按钮默认边框 */
+
+		font-family: MiSans, MiSans;
+		font-weight: 500;
+		font-size: 32rpx;
+		color: #FFFFFF;
+		line-height: 40rpx;
+		text-align: center;
+		font-style: normal;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 116rpx auto 46rpx;
+		
+		/* 重置按钮默认样式 */
+		padding: 0;
+		outline: none;
+		
+		&::after {
+			border: none; /* 移除按钮点击后的边框效果 */
+		}
+	}
+
+	.login_agreement{
+		width: 510rpx;
+		height: 40rpx;
+		font-family: MiSans, MiSans;
+		font-weight: 400;
+		font-size: 24rpx;
+		color: #999999;
+		line-height: 40rpx;
+		text-align: left;
+		font-style: normal;
+		margin: 0 auto;
+	}
+	.agm_light{
+		display: inline-block;
+	}
+}
