@@ -83,6 +83,7 @@
 			<!-- 底部运营信息 -->
 			<view class="operation-info">
 				<view class="operation-text">{{operatorInfo}}</view>
+				<view class="operation-text">合作方：安徽太湖农村商业银行股份有限公司</view>
 			</view>
 		</view>
 		<Tabbar :activeIndex="3" />

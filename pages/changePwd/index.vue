@@ -184,6 +184,66 @@ export default {
 
 		// 提交表单
 		submitForm() {
+			// 检查设备是否支持生物支付
+			const biometricSupport = uni.getStorageSync("biometricSupport");
+			const isBiometricSupported = biometricSupport && biometricSupport.supported;
+			
+			// 检查用户是否已经设置了支付密码
+			const userInfo = uni.getStorageSync("userInfo");
+			const hasPayPass = userInfo && userInfo.hasPayPass;
+			
+			// 如果设备支持生物支付，且用户已经设置了支付密码，但表单中的密码为空或再次输入为空
+			if (isBiometricSupported  && (!this.form.password && !this.form.passwordEnc)) {
+				// 只更新支付方式，不更新密码
+				const formData = {
+					// 添加支付方式参数：1表示没开启生物支付，2表示开启生物支付
+					payWay: this.checked ? "2" : "1"
+				};
+				
+				uni.showLoading({
+					title: "加载中",
+					mask: true,
+				});
+				
+				util.post(`/customer/updateUserPayWay`, formData)
+					.then((res) => {
+						uni.hideLoading();
+						if (res.code == "0000") {
+							// 更新本地存储的userInfo中的defaultPayWay
+							if (userInfo) {
+								userInfo.defaultPayWay = this.checked ? "2" : "1";
+								uni.setStorageSync("userInfo", userInfo);
+							}
+							
+							uni.showToast({
+								title: "修改成功",
+								icon: "success",
+								mask: true,
+								duration: 1000,
+							});
+							// 跳转到其他页面或执行其他操作
+							setTimeout(() => {
+								uni.navigateBack();
+							}, 1000);
+						} else {
+							uni.showToast({
+								title: res.message || "修改失败",
+								icon: "none",
+								mask: true,
+							});
+						}
+					})
+					.catch((err) => {
+						console.error("修改支付方式请求失败:", err);
+						uni.showToast({
+							title: "网络错误，请稍后重试",
+							icon: "none",
+							mask: true,
+						});
+					});
+				return;
+			}
+			
 			// 手动检查密码一致性
 			if (this.form.password !== this.form.passwordEnc) {
 				this.$u.toast("两次输入的密码不一致");
@@ -212,6 +272,7 @@ export default {
 								const userInfo = uni.getStorageSync("userInfo");
 								if (userInfo) {
 									userInfo.defaultPayWay = this.checked ? "2" : "1";
+									userInfo.hasPayPass = true; // 标记已设置支付密码
 									uni.setStorageSync("userInfo", userInfo);
 								}
 								

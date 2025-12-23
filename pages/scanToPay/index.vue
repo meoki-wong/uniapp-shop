@@ -19,14 +19,14 @@
 			<view class="payment-info">
 				<view class="payment-amount">
 					<view class="amount-label">支付金额</view>
-					<view class="amount-input-container">
+					<view class="amount-input-container" @tap="showAmountKeyboard">
 						<text class="currency-symbol">¥</text>
 						<input
 							class="amount-input"
 							type="digit"
 							v-model="paymentAmount"
 							placeholder="请输入金额"
-							@input="inputAmount"
+							disabled
 						/>
 					</view>
 				</view>
@@ -91,6 +91,25 @@
 			<button class="confirm-pay-btn" @click="confirmPayment">确认支付</button>
 		</view>
 
+		<!-- 金额输入键盘 -->
+		<u-keyboard
+			mode="number"
+			:dot-enabled="true"
+			:tooltip="true"
+			:cancel-btn="true"
+			:show-tips="true"
+			confirm-text="确认"
+			tips="请输入金额"
+			:mask="false"
+			v-model="showAmountKeyboardPopup"
+			@change="inputAmountNumber"
+			@backspace="deleteAmountNumber"
+			@cancel="closeAmountKeyboard"
+			@confirm="confirmAmount"
+			ref="amountKeyboard"
+		>
+		</u-keyboard>
+
 		<!-- 密码输入弹窗 -->
 		<u-keyboard
 			mode="number"
@@ -150,6 +169,8 @@ export default {
 			biometricSupported: false, // 设备是否支持生物支付
 			biometricEnabled: false,   // 用户是否开启了生物支付
 			useBiometricPayment: false, // 是否使用生物支付
+			// 金额输入键盘
+			showAmountKeyboardPopup: false, // 是否显示金额输入键盘
 		};
 	},
 	computed: {
@@ -245,10 +266,12 @@ export default {
 			if(res.code == '0000'){
 				this.totalBalance = res.data.balance
 				this.hasPayPass = res.data.hasPayPass
+				this.biometricEnabled = res.data?.defaultPayWay === "2";
 			} else {
 				let userInfos = uni.getStorageSync("userInfo") || {};
 				this.totalBalance = userInfos.balance || 0
 				this.hasPayPass = userInfos.hasPayPass || false
+				this.biometricEnabled = userInfo && userInfo.defaultPayWay === "2";
 			}
 			
 			// 获取设备是否支持生物支付
@@ -323,6 +346,90 @@ export default {
 			if (res.code == "0000") {
 				this.useAsset = res.data.useAsset;
 				this.useCash = res.data.useCash;
+			}
+			return 10;
+		},
+
+		// 显示金额输入键盘
+		showAmountKeyboard() {
+			this.showAmountKeyboardPopup = true;
+		},
+		
+		// 关闭金额输入键盘
+		closeAmountKeyboard() {
+			this.showAmountKeyboardPopup = false;
+		},
+		
+		// 输入金额数字
+		inputAmountNumber(num) {
+			// 如果当前是空字符串且输入的是0，不允许
+			if (this.paymentAmount === '' && num === '0') {
+				return;
+			}
+			
+			// 如果输入的是小数点
+			if (num === '.') {
+				// 如果已经包含小数点，不再添加
+				if (this.paymentAmount.includes('.')) {
+					return;
+				}
+				// 如果当前为空，先添加0
+				if (this.paymentAmount === '') {
+					this.paymentAmount = '0.';
+				} else {
+					this.paymentAmount += '.';
+				}
+			} else {
+				// 输入的是数字
+				// 检查小数位数
+				if (this.paymentAmount.includes('.')) {
+					const parts = this.paymentAmount.split('.');
+					if (parts[1].length >= 2) {
+						return; // 小数点后最多两位
+					}
+				}
+				
+				// 如果当前是0且输入的不是小数点，替换掉0
+				if (this.paymentAmount === '0') {
+					this.paymentAmount = num;
+				} else {
+					this.paymentAmount += num;
+				}
+			}
+			
+			this.updateAmountCalculation();
+		},
+		
+		// 删除金额数字
+		deleteAmountNumber() {
+			if (this.paymentAmount.length > 0) {
+				this.paymentAmount = this.paymentAmount.slice(0, -1);
+				this.updateAmountCalculation();
+			}
+		},
+		
+		// 确认金额输入
+		confirmAmount() {
+			this.showAmountKeyboardPopup = false;
+		},
+		
+		// 更新金额计算
+		updateAmountCalculation() {
+			// 计算订单价格（转换为分）
+			this.orderPrice = this.paymentAmount || 0
+			
+			// 计算代币和现金的使用金额
+			this.calculatePaymentSplit();
+		},
+
+		// 计算支付拆分
+		async calculatePaymentSplit() {
+			if (this.orderPrice > 0) {
+				let res = await util.post("/order/calPrice", { orderPrice: this.orderPrice });
+				if (res.code == "0000") {
+					this.useAsset = res.data.useAsset;
+					this.useCash = res.data.useCash;
+				}
 			}
 		},
 		// 设置评分
@@ -524,18 +631,29 @@ export default {
 				
 				if (res.code === '0000') {
 					uni.hideLoading();
-					uni.showToast({
-						title: "支付成功",
-						icon: "success",
-						duration: 1500,
-					});
 					
-					// 跳转到支付成功页面
-					setTimeout(() => {
-						uni.navigateTo({
-							url: "/pages/orderPage/payment?orderId=" + res.data.orderId
+					if (res.data.orderStatus == "1") {
+						// 跳转到支付页面
+						setTimeout(() => {
+							uni.navigateTo({
+								url: "/pages/orderPage/payment?orderId=" + res.data.orderId
+							});
+						}, 1500);
+					} else {
+						// 支付成功，跳转到订单列表
+						uni.showToast({
+							title: "支付成功",
+							icon: "success",
+							duration: 1500,
+							success() {
+								setTimeout(() => {
+									uni.navigateTo({
+										url: "/pages/orderPage/index?id=" + res.data.orderId,
+									});
+								}, 1500);
+							},
 						});
-					}, 1500);
+					}
 				} else {
 					uni.hideLoading();
 					uni.showToast({
@@ -576,7 +694,7 @@ export default {
 					success: (res) => {
 						console.log('生物认证成功:', res);
 						resolve({
-							jsonSignature: res.resultJSON || '',
+							jsonSignature: res.resultJSONSignature || '',
 							jsonString: res.resultJSON || ''
 						});
 					},

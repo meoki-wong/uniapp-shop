@@ -16,23 +16,26 @@
 				<view class="filter-section">
 					<u-dropdown class="u-dropdown">
 						<u-dropdown-item
-							v-model="regionValue"
-							title="区域"
-							:options="regionOptions"
-							@change="regionChange"
-						></u-dropdown-item>
-						<u-dropdown-item
-							v-model="categoryValue"
-							title="分类"
-							:options="categoryOptions"
-							@change="categoryChange"
-						></u-dropdown-item>
-						<u-dropdown-item
-							v-model="sortValue"
-							title="排序"
-							:options="sortOptions"
-							@change="sortChange"
-						></u-dropdown-item>
+						v-model="regionValue"
+						title="区域"
+						:options="regionOptions"
+						@change="regionChange"
+						height="750"
+					></u-dropdown-item>
+					<u-dropdown-item
+						v-model="categoryValue"
+						title="分类"
+						:options="categoryOptions"
+						@change="categoryChange"
+						height="750"
+					></u-dropdown-item>
+					<u-dropdown-item
+						v-model="sortValue"
+						title="排序"
+						:options="sortOptions"
+						@change="sortChange"
+						height="750"
+					></u-dropdown-item>
 					</u-dropdown>
 				</view>
 			</view>
